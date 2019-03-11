@@ -1,0 +1,14 @@
+{
+  "name": "zwave-interface-module",
+  "version": "1.0.0",
+  "description": "Z-Wave interface module for IoThings",
+  "main": "ZwaveInterface.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Martin Stradiot",
+  "license": "ISC",
+  "dependencies": {
+    "sqlite-module": "git+https://5e6547fb352da028e3d82bd0328eb03998ad7fb8:x-oauth-basic@github.com/stradiot/sqlite-module.git"
+  }
+}
