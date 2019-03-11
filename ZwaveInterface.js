@@ -14,11 +14,13 @@ class ZwaveInterface extends EventEmitter  {
         };
 
         const resolveNodeAdded = (moduleId, data) => {
-          sqlite.addZwaveDevice({ ...data, moduleId });
+          const result = sqlite.addZwaveDevice({ ...data, moduleId });
+          result && this.emit('node added', data.nodeId);
         };
 
         const resolveNodeRemoved = (moduleId, data) => {
-          sqlite.removeZwaveDevice({ ...data, moduleId });
+          const result = sqlite.removeZwaveDevice({ ...data, moduleId });
+          result && this.emit('node removed', data.nodeId);
         };
 
         const resolveNodeReady = (moduleId, data) => {
@@ -47,8 +49,8 @@ class ZwaveInterface extends EventEmitter  {
         };
 
         const resolveBasicReceived = (moduleId, data) => {
-          sqlite.processZwaveBasicSet({ ...data, moduleId });
-          console.log('BASIC SET RECEIVED');
+            console.log('BASIC SET RECEIVED');
+            sqlite.processZwaveBasicSet({ ...data, moduleId });
         };
 
         const resolveResponse = (moduleId, data) => {
