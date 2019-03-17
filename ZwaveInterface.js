@@ -39,11 +39,13 @@ class ZwaveInterface extends EventEmitter  {
           }
 
           const result = sqlite.processZwaveUpdate({ ...data, moduleId });
+          const { paramId, value, polled } = result;
 
-          if (!!result.paramId) {
+          if (!!paramId) {
             this.emit('parameter value changed', {
-              parameter: result.paramId,
-              value: result.value
+              paramId,
+              value,
+              polled
             });
           }
         };
