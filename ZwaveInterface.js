@@ -33,7 +33,7 @@ class ZwaveInterface extends EventEmitter  {
 
         const resolveValueChanged = (moduleId, data) => {
           if (data.polled) {
-              this.getPollIntensity(moduleId, valueId);
+              this.getPollIntensity(moduleId, data.valueId);
           } else {
             data.pollIntensity = 0;
           }
