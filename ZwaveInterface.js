@@ -30,7 +30,7 @@ class ZwaveInterface extends EventEmitter  {
         };
 
         const resolveNodeReady = (moduleId, data) => {
-          const result = sqlite.addZwaveDeviceInformation({ ...data, name: data.paramName, moduleId });
+          const result = sqlite.addZwaveDeviceInformation({ moduleId, ...data });
           result && this.emit('node ready', {
             moduleId,
             ...data
